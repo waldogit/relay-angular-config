@@ -1,0 +1,20 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "relayAngularConfig",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "relay-angular-config",
+      "kebab-case"
+    ]
+  },
+  "linterOptions": {
+    "exclude": ["!**/*"]
+  }
+}
