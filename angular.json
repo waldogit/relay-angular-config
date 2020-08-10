@@ -15,12 +15,15 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "relay-runtime", "relay-angular"
+            ],
             "outputPath": "dist/apps/relay-angular-config",
             "index": "apps/relay-angular-config/src/index.html",
             "main": "apps/relay-angular-config/src/main.ts",
             "polyfills": "apps/relay-angular-config/src/polyfills.ts",
             "tsConfig": "apps/relay-angular-config/tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "apps/relay-angular-config/src/favicon.ico",
               "apps/relay-angular-config/src/assets"
