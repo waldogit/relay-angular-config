@@ -1,13 +1,27 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@relay-angular-config/api-interfaces';
+import { EnvironmentContext } from 'relay-angular';
+import EnvironmentError from '../relay/errorRelay';
+import EnvironmentRight from '../relay/relay';
 
 @Component({
-  selector: 'relay-angular-config-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less'],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+    user = 'me';
+
+    constructor(private environmentContext: EnvironmentContext) {}
+
+    onChangeUser(user) {
+        this.user = user;
+    }
+
+    handleRightEnv() {
+        this.environmentContext.next(EnvironmentRight);
+    }
+
+    handleWrongEnv() {
+        this.environmentContext.next(EnvironmentError);
+    }
 }

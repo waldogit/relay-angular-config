@@ -1,21 +1,22 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+import * as express from 'express';
+import * as graphQLHTTP from 'express-graphql';
+import {schema} from '../data/schema';
 
-import { Logger } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+import * as cors from 'cors';
 
-import { AppModule } from './app/app.module';
+const APP_PORT: number = 3000;
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3333;
-  await app.listen(port, () => {
-    Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
-  });
-}
+const app = express();
 
-bootstrap();
+app.use('*', cors({origin: 'http://localhost:4200'}));
+app.use(
+  '/graphql',
+  graphQLHTTP({
+    schema: schema,
+    pretty: true,
+  }),
+);
+
+app.listen(APP_PORT, () => {
+  console.log(`App is now running on http://localhost:${APP_PORT}`);
+});

@@ -13,7 +13,7 @@
       "prefix": "relay-angular-config",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/relay-angular-config",
             "index": "apps/relay-angular-config/src/index.html",
@@ -60,7 +60,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "relay-angular-config:build",
             "proxyConfig": "apps/relay-angular-config/proxy.conf.json"

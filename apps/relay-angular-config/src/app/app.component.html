@@ -1,8 +1,20 @@
-<div style="text-align: center;">
-  <h1>Welcome to relay-angular-config!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-  />
-</div>
-<div>Message: {{ hello$ | async | json }}</div>
+<section>
+  <div class="headerButton">
+    <button [ngClass]="{'border': user==='me'}" class="userButton" (click)="onChangeUser('me')">ME</button>
+    <button [ngClass]="{'border': user==='you'}" class="userButton" (click)="onChangeUser('you')">YOU</button>
+    </div>
+  <todo-query [userId]="user">
+  </todo-query>
+  <footer class="headerButton">
+    <button
+    class="clear-completed userButton"
+    (click)="handleRightEnv()">
+    Right Environment
+</button>
+  <button
+          class="clear-completed userButton"
+          (click)="handleWrongEnv()">
+          Wrong Environment
+  </button>
+</footer>
+</section>
