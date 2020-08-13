@@ -5,6 +5,7 @@ import { Todo } from '../todo';
 import { todoListItem_todo$key, todoListItem_todo$data } from '../../__generated__/relay/todoListItem_todo.graphql';
 import changeTodoStatus from '../mutations/changeTodoStatus';
 import removeTodo from '../mutations/removeTodo';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const fragmentNode = graphql`
     fragment todoListItem_todo on Todo {
@@ -29,6 +30,7 @@ const fragmentNodeUser = graphql`
     styleUrls: ['./todo-list-item.component.css'],
 })
 export class TodoListItemComponent {
+  constructor(private route: ActivatedRoute, private router: Router) {}
     @Input()
     fragmentRef: todoListItem_todo$key;
 
@@ -53,6 +55,10 @@ export class TodoListItemComponent {
 
     toggleTodoComplete() {
         changeTodoStatus.commit(!this.todo.complete, this.todo, this.user);
+    }
+    showWithYours() {
+      console.log('show with yours');
+      this.router.navigate([this.todo.id], { relativeTo: this.route})
     }
 
     removeTodo(todo: todoListItem_todo$data) {

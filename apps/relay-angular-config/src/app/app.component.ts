@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { EnvironmentContext } from 'relay-angular';
 import EnvironmentError from '../relay/errorRelay';
 import EnvironmentRight from '../relay/relay';
@@ -9,7 +9,12 @@ import EnvironmentRight from '../relay/relay';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-    user = 'me';
+  @Input()
+  get user(): string { return this._user; }
+  set user(user: string) {
+    this._user = user || 'me';
+  }
+    private _user = 'me';
 
     constructor(private environmentContext: EnvironmentContext) {}
 

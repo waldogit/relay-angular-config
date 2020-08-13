@@ -12,6 +12,9 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
 import RelayModernEnvironment from '../relay/relay';
 import { RelayProvider } from 'relay-angular';
 import { TodoQueryComponent } from './todo-query/todo-query.component';
+import { CombinedComponent } from './combined/combined.component';
+import { RoutingModule } from './routing.module';
+import { RootComponent } from './root/root.component';
 
 @NgModule({
     declarations: [
@@ -22,9 +25,11 @@ import { TodoQueryComponent } from './todo-query/todo-query.component';
         TodoListFooterComponent,
         TodoListHeaderComponent,
         TodoListItemComponent,
+        CombinedComponent,
+        RootComponent,
     ],
-    imports: [BrowserModule, FormsModule],
+    imports: [BrowserModule, FormsModule, RoutingModule],
     providers: [[RelayProvider(RelayModernEnvironment)]],
-    bootstrap: [AppComponent],
+    bootstrap: [RootComponent],
 })
 export class AppModule {}
