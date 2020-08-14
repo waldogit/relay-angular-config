@@ -1,2 +1,7 @@
-<p>My todo: {{ result.text }}</p>
+<p>
+  My todo:
+  {{
+    result && result.props && result.props.node ? result.props.node.text : ''
+  }}
+</p>
 <app-root user="you"></app-root>
