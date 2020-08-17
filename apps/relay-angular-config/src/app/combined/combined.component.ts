@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Query } from 'relay-angular';
+import { Query, RenderProps } from 'relay-angular';
 import { tap } from 'rxjs/operators';
 import {
   combinedQuery,
@@ -35,7 +35,7 @@ export class CombinedComponent implements OnInit {
       variables: { fragmentId: this.fragmentId },
     };
   })
-  result: combinedQueryResponse;
+  result: RenderProps<combinedQuery>;
 
   ngOnInit(): void {
     this.route.paramMap
